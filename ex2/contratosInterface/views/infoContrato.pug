@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    .w3-card-4
+        header.w3-container.w3-teal
+            h1 Contract id: #{contrato._id}
+
+        .w3-container
+            ul.w3-ul.w3-card-4(style="width:50%")
+                li
+                    b Tipo Procedimento: 
+                    span= contrato.tipoprocedimento
+                li
+                    b Objeto Contrato: 
+                    span= contrato.objectoContrato
+                li
+                    b Data Publicacao: 
+                    span= contrato.dataPublicacao
+                li
+                    b Data Celebracao: 
+                    span= contrato.dataCelebracaoContrato
+                li
+                    b Preço Contratual: 
+                    span= contrato.precoContratual
+                li
+                    b Prazo Execucao: 
+                    span= contrato.prazoExecucao
+                li
+                    b NIPC da Entidade Comunicante: 
+                    span= contrato.NIPC_entidade_comunicante
+                li
+                    b Entidade Comunicante 
+                    span= contrato.entidade_comunicante
+                li
+                    b Fundamentacao: 
+                    span= contrato.fundamentacao
+                
+    .w3-cell.w3-container.w3-margin-bottom
+        a.w3-button.w3-teal(href="/")
+            b Back to Contract List

@@ -1,0 +1,34 @@
+1)
+contratos> db.contratos.countDocuments()
+36377
+
+2)
+contratos> db.contratos.countDocuments({"tipoprocedimento": "Ajuste Direto Regime Geral"})
+17067
+
+3)
+contratos> db.contratos.aggregate([{$group: {"_id": "$entidade_comunicante"}},{$sort: {"_id": 1}},{$project: {_id: 0, entidade: "$_id"}},{$group:{_id: null, entidades: {$push: "$entidade"}}}])
+
+4)
+contratos> db.contratos.aggregate([{$group: {"_id": "$tipoprocedimento", "total": {$sum: 1}}},{$sort: {"_id": 1}}])
+[
+  { _id: 'Ajuste Direto Regime Geral', total: 17067 },
+  { _id: 'Ao abrigo de acordo-quadro (art.º 258.º)', total: 995 },
+  { _id: 'Ao abrigo de acordo-quadro (art.º 259.º)', total: 4678 },
+  { _id: 'Concurso limitado por prévia qualificação', total: 53 },
+  { _id: 'Concurso público', total: 5300 },
+  { _id: 'Concurso público simplificado', total: 3 },
+  { _id: 'Consulta Prévia', total: 8000 },
+  { _id: 'Consulta Prévia Simplificada', total: 96 },
+  {
+    _id: 'Consulta prévia ao abrigo do artigo 7º da Lei n.º 30/2021, de 21.05',
+    total: 1
+  },
+  { _id: 'Contratação excluída II', total: 144 },
+  { _id: 'Procedimento de negociação', total: 1 },
+  { _id: 'Setores especiais – isenção parte II', total: 39 }
+]
+
+5)
+
+
